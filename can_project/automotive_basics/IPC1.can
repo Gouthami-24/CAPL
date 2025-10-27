@@ -1,0 +1,32 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+}
+  on message BCMMessage{
+    //@ind_sys_var::Sys_IPC=this.BCM_Siganl;
+    if(this.BCM_Siganl==0x1){
+      @ind_sys_var::Sys_Red=0x1;
+      @ind_sys_var::Sys_Orange=0x0;
+      @ind_sys_var::Sys_Yellow=0x0;
+    }else if(this.BCM_Siganl==0x2){
+      @ind_sys_var::Sys_Orange=0x1;
+      @ind_sys_var::Sys_Red=0x0;
+      @ind_sys_var::Sys_Yellow=0x0;
+    }
+   else if(this.BCM_Siganl==0x3){
+      @ind_sys_var::Sys_Yellow=0x1;
+      @ind_sys_var::Sys_Red=0x0;
+      @ind_sys_var::Sys_Orange=0x0;
+    }else{
+      @ind_sys_var::Sys_Red=0x0;
+      @ind_sys_var::Sys_Orange=0x0;
+      @ind_sys_var::Sys_Yellow=0x0;
+      
+    }
+}
+

@@ -1,0 +1,19 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  message BCMMessage b;
+}
+on start{
+  b.BCM_Siganl=0x3;
+  output(b);
+}
+on sysvar ind_sys_var::Sys_BCM{
+  b.BCM_Siganl=@ind_sys_var::Sys_BCM;
+  output(b);
+}
+

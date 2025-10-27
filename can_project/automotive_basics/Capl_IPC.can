@@ -1,0 +1,14 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  
+}
+on message BCMMessage{
+  @Capl_practive_sys_var::Sys_IPC=this.BCM_Signal;
+}
+

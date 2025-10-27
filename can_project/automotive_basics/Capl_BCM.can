@@ -1,0 +1,98 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  message BCMMessage b;
+  message GWMMessage g;
+  msTimer t1;
+  //int counter=1;
+}
+//on start{
+//  b.BCM_Signal=0x1;
+//  output(b);
+//}
+//
+//
+//on key 'k'{
+//  b.BCM_Signal=0x1;
+//  output(b);
+//}
+//on key 'K'{
+//  b.BCM_Signal=0x0;
+//  output(b);
+//}
+//on key *
+//{
+//  b.BCM_Signal=0x1;
+//  output(b);
+//}
+//on key 'm'{
+//  b.BCM_Signal=0x0;
+//  output(b);
+//}
+
+//on start{
+//  setTimer(t1,1);
+//}
+//on timer t1{
+//  if(counter<=10)
+//  {
+//    output(b);
+//    setTimer(t1,1);
+//
+//  }
+//}
+/*on key * {
+  setTimer(t1,50);
+}
+on timer t1 {
+  if(counter<=30){
+  output(b);
+  write("bcm message");
+     write("cout=%d",counter);
+    counter++;
+   
+  setTimer(t1,50);
+}
+else{
+  setTimer(t2,100);
+}
+
+}
+on timer t2 {
+  if(counter <=80)
+  {
+    output(b);
+    write("gwm message");
+     counter++;
+    setTimer(t2,100);
+   
+  }else{
+    counter=0;
+    setTimer(t1,50);
+  }
+}*/
+//led blink 
+
+
+on start{
+  settimer(t1,100);
+}
+on timer t1{
+  
+   b.BCM_Signal=!(b.BCM_Signal);
+  output(b);
+  setTimer(t1,100);
+}
+  
+
+    
+    
+
+
+  
+

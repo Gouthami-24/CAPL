@@ -1,0 +1,12 @@
+verion :git v--ersion
+initialize the git: git init
+status: git status
+to know who you are:
+git config --global user.email "gouthamikasha@gmail.com"
+git config --global user.name "gouthami"
+comment: git commit "your comment"
+to login into github: git log
+
+
+
+

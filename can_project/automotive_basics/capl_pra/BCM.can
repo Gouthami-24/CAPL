@@ -1,0 +1,223 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+//key j yellow LED  5 sec periodicity
+//note: 0x1 -red, 0x2-orange, 0x3-yellow
+/*variables
+{
+  message BCMMessage b;
+  msTimer t1;
+  
+}
+on key 'j'{
+  setTimer(t1,5);
+}
+on timer t1{
+  b.BCM_Signal=0x3;
+  output(b);
+  setTimer(t1,5);
+}
+
+//on tool start red led for every 500ms
+variables
+{
+  message BCMMessage b;
+  msTimer t1;
+  
+}
+on start{
+  setTimer(t1,500);
+}
+on timer t1{
+  b.BCM_Signal=0x1;
+  output(b);
+  setTimer(t1,500);
+}
+
+//3. on key k orange led with 200 periodicity
+variables
+{
+  message BCMMessage b;
+  msTimer t1;
+  
+}
+on key 'k'{
+  setTimer(t1,200);
+}
+on timer t1{
+  b.BCM_Signal=0x2;
+  output(b);
+  setTimer(t1,200);
+}
+
+//key z  bcmmessage shall go cann/w with 300ms periodicity from tje 2nd tx with 500ms
+
+variables
+{
+  message BCMMessage b;
+  msTimer t1;
+  
+}
+on key 'z'{
+  setTimer(t1,200);
+}
+on timer t1{
+  
+  output(b);
+  
+  setTimer(t1,500);
+}
+
+//key a bcmmessage go to on to can n/wn with 300ms if b msg shall not be tx
+
+variables
+{
+  message BCMMessage b;
+  msTimer t1;
+  
+}
+on key 'a'{
+  setTimer(t1,200);
+}
+on timer t1{
+  
+  output(b);
+  
+  
+  setTimer(t1,200);
+}
+on key 'b'{
+  cancelTimer(t1);
+}
+  
+// key x bcmmsg shall go to the can n/w with sngl 0x3 with 500 periodicity, if i press key y msg shall not be tx after
+//200ms led shall go off 
+
+variables
+{
+  message BCMMessage b;
+  msTimer t1,t2;
+  
+}
+on key 'x'{
+  setTimer(t1,500);
+}
+on timer t1{
+  b.BCM_Signal=0x3;
+  
+  output(b);
+  
+  
+  setTimer(t1,500);
+}
+on key 'y'{
+  setTimer(t2,200);
+}
+on timer t2{
+  b.BCM_Signal=0x0;
+  output(b);
+  cancelTimer(t1);
+}
+
+//on start bcmmsg shall go to can n/w with periodicity 1ms for 5 min 
+
+variables
+{
+  message BCMMessage b;
+  msTimer t1;
+  int c=0;
+  
+}
+on start{
+  
+  setTimer(t1,1);
+}
+on timer t1{
+  if(c<=300000)
+  {
+    
+  //b.BCM_Signal=0x3;
+  
+  output(b);
+  c++;
+  
+  setTimer(t1,1);
+}}
+
+//any key bcmmsg shall go to can n/w with 500ms periodicity for 30 times 
+//gwm msg shall go to can for every 100ms periodically for 50 times this process shall repeat continuously 
+variables
+{
+  message BCMMessage b;
+  message GWMMessage g;
+  msTimer t1,t2;
+  int c=1;
+  
+}
+on key *{
+  
+  setTimer(t1,500);
+}
+on timer t1{
+  if(c<=30)
+  {
+    
+  //b.BCM_Signal=0x3;
+  
+  output(b);
+    write("bcmmsg:%d",c);
+  c++;
+  
+  setTimer(t1,500);
+}else{
+  setTimer(t2,100);
+}
+}
+on timer t2{
+   if(c<=80){
+    output(g);
+     write("gwmmsg:%d",c);
+    setTimer(t2,100);
+    c++;
+}
+  else{
+    c=1;
+    setTimer(t1,500);
+  }
+}
+  */
+//if i press key j bcmmsg go to can n/w with 4 sec periodicity , on each tx the count value increated to 10 once it reached t 100
+//the count Value  become 0 msg shall not be tx 
+
+ variables
+{
+  message BCMMessage b;
+  
+  Timer t1;
+  int c=10;
+  
+}
+on key 'j'{
+  
+  setTimer(t1,4);
+}
+on timer t1{
+  if(c<=100)
+  {
+    
+  //b.BCM_Signal=0x3;
+  
+  output(b);
+    write("bcmmsg:%d",c);
+  c+=10;
+  
+  setTimer(t1,4);
+}else{
+  c=0;
+  cancelTimer(t1);
+  
+}
+}
+

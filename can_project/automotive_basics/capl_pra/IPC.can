@@ -1,0 +1,36 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  
+}
+
+ // @CAPL_PRA::Sys_IPC=this.BCM_SIgnal;
+ on message BCMMessage{
+    //@ind_sys_var::Sys_IPC=this.BCM_Siganl;
+    if(this.BCM_Signal==0x1){
+      @CAPL_PRA::Sys_RED=0x1;
+      @CAPL_PRA::Sys_Orange=0x0;
+      @CAPL_PRA::Sys_Yellow=0x0;
+    }else if(this.BCM_Signal==0x2){
+      @CAPL_PRA::Sys_Orange=0x1;
+       @CAPL_PRA::Sys_RED=0x0;
+      @CAPL_PRA::Sys_Yellow=0x0;
+    }
+   else if(this.BCM_Signal==0x3){
+      @CAPL_PRA::Sys_Yellow=0x1;
+      @CAPL_PRA::Sys_RED=0x0;
+       @CAPL_PRA::Sys_Orange=0x0;
+    }else{
+       @CAPL_PRA::Sys_RED=0x0;
+       @CAPL_PRA::Sys_Orange=0x0;
+       @CAPL_PRA::Sys_Yellow=0x0;
+      
+    }
+  
+  
+}
