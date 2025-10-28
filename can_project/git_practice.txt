@@ -6,6 +6,37 @@ git config --global user.email "gouthamikasha@gmail.com"
 git config --global user.name "gouthami"
 comment: git commit "your comment"
 to login into github: git log
+git clone: cloning  the information from other account :git clone link 
+
+
+if tester not present :
+
+clone the git 
+add the changes /new files files we are not allowed to push in main so create branch and push into it 
+master-100% tested working code
+branches: other persons can add changes or new files so the main tester can take from it
+git branch give branch name
+git log
+to change the branch :git checkout give branch name (you changed to new branch "
+push this branch to GitHub: git push -u origin give branch name`(updated n GitHub)
+wanted to push it to main 
+to move to main: git checkout main
+                 git pull origin main(if some has changed the code in master/main that will updated into branch )
+MERGING BRANCH TO MAIN : git merge give branch name
+                         git push origin main 
+deleting a branch : git branch -d branch name
+push the deletion : git push --delete give branch name 
+after this  delete under git hub 
+                
+
+
+
+Q)what is the use of git clone folder he created on folder and cloned it no further usage of this.
+
+
+
+
+
 
 
 
